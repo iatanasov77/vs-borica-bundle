@@ -4,10 +4,10 @@ use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\LogicException;
 use Payum\Core\Exception\RequestNotSupportedException;
 
-use Vankosoft\Borica\Request\Api\CheckTransaction;
+use Vankosoft\Borica\Request\Api\CheckTransactionStatus;
 use Vankosoft\BoricaApi\Exceptions;
 
-class CheckTransactionAction extends AbstractApiAction
+class CheckTransactionStatusAction extends AbstractApiAction
 {
     /**
      * {@inheritDoc}
@@ -44,7 +44,7 @@ class CheckTransactionAction extends AbstractApiAction
     public function supports( $request )
     {
         return
-        $request instanceof CheckTransaction &&
+        $request instanceof CheckTransactionStatus &&
             $request->getModel() instanceof \ArrayAccess
         ;
     }
