@@ -31,7 +31,10 @@ class BoricaGatewayFactory extends GatewayFactory
 
         if ( false == $config['payum.api'] ) {
             $config['payum.default_options'] = [
-                'sandbox' => true,
+                'sandbox'       => true,
+                'terminal_id'   => '',
+                'private_key'   => 'path/to/private.key',
+                'public_cert'   => 'path/to/public.cer'
             ];
             $config->defaults( $config['payum.default_options'] );
             $config['payum.required_options'] = [];
