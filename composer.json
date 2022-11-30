@@ -19,8 +19,7 @@
         }
     ],
     "require": {
-        "payum/core": "^1.5",
-        "mirovit/borica-api": "^1.1"
+        "payum/core": "^1.5"
     },
     "require-dev": {
         "payum/core": "^1.5",
@@ -32,7 +31,8 @@
     "autoload": {
         "psr-4": {
             "Vankosoft\\Borica\\": "src/Vankosoft/Borica/",
-            "Vankosoft\\BoricaBundle\\": "src/Vankosoft/BoricaBundle/"
+            "Vankosoft\\BoricaBundle\\": "src/Vankosoft/BoricaBundle/",
+            "Vankosoft\\BoricaApi\\": "src/Vankosoft/BoricaApi/"
         }
     }
 }
