@@ -11,6 +11,10 @@ use Vankosoft\Borica\Action\NotifyAction;
 use Vankosoft\Borica\Action\RefundAction;
 use Vankosoft\Borica\Action\StatusAction;
 
+use Vankosoft\Borica\Action\Api\CreateTransactionAction;
+use Vankosoft\Borica\Action\Api\CheckTransactionStatusAction;
+use Vankosoft\Borica\Action\Api\ReverseTransactionAction;
+
 class BoricaGatewayFactory extends GatewayFactory
 {
     /**
@@ -22,15 +26,20 @@ class BoricaGatewayFactory extends GatewayFactory
          * I dont know which actions are needed for now
          */
         $config->defaults([
-            'payum.factory_name'            => 'borica',
-            'payum.factory_title'           => 'Borica',
-            'payum.action.capture'          => new CaptureAction(),
-            'payum.action.authorize'        => new AuthorizeAction(),
-            'payum.action.refund'           => new RefundAction(),
-            'payum.action.cancel'           => new CancelAction(),
-            'payum.action.notify'           => new NotifyAction(),
-            'payum.action.status'           => new StatusAction(),
-            'payum.action.convert_payment'  => new ConvertPaymentAction(),
+            'payum.factory_name'                => 'borica',
+            'payum.factory_title'               => 'Borica',
+            
+            'payum.action.capture'              => new CaptureAction(),
+            'payum.action.authorize'            => new AuthorizeAction(),
+            'payum.action.refund'               => new RefundAction(),
+            'payum.action.cancel'               => new CancelAction(),
+            'payum.action.notify'               => new NotifyAction(),
+            'payum.action.status'               => new StatusAction(),
+            'payum.action.convert_payment'      => new ConvertPaymentAction(),
+            
+            'payum.action.create_transaction'   => new CreateTransactionAction(),
+            'payum.action.check_transaction'    => new CheckTransactionStatusAction(),
+            'payum.action.reverse_transaction'  => new ReverseTransactionAction(),
         ]);
 
         if ( false == $config['payum.api'] ) {
