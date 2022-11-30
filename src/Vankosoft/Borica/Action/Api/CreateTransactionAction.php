@@ -21,6 +21,7 @@ class CreateTransactionAction extends AbstractApiAction
 
         try {
             $redirectUrl    = $this->getBoricaFactory()
+                                    ->request()
                                     ->amount( '1' ) // 1 BGN
                                     ->orderID( 1 ) // Unique identifier in your system
                                     ->description( 'testing the process' ) // Short description of the purchase (up to 125 chars)
@@ -32,8 +33,7 @@ class CreateTransactionAction extends AbstractApiAction
 
             $model->replace($charge->toArray(true));
             */
-        // } catch ( Exception\ApiErrorException $e ) {
-        } catch ( \Exception $e ) {
+        } catch ( Exceptions\ApiErrorException $e ) {
             $model->replace( $e->getJsonBody() );
         }
     }
