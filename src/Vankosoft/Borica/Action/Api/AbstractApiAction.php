@@ -34,7 +34,7 @@ abstract class AbstractApiAction implements ActionInterface, ApiAwareInterface
     /**
      * Manual: https://github.com/mirovit/borica-api
      */
-    private function getBoricaFactory()
+    protected function getBoricaFactory()
     {
         $factory = new Factory(
             new Request(
