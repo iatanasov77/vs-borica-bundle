@@ -33,8 +33,7 @@ class CreateTransactionAction extends AbstractApiAction
 
             $model->replace($charge->toArray(true));
             */
-        // } catch ( Exception\ApiErrorException $e ) {
-        } catch ( \Exception $e ) {
+        } catch ( Exceptions\ApiErrorException $e ) {
             $model->replace( $e->getJsonBody() );
         }
     }
