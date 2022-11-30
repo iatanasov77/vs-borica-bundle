@@ -6,6 +6,7 @@ class Factory
      * @var Request
      */
     private $request;
+    
     /**
      * @var Response
      */
@@ -13,7 +14,7 @@ class Factory
 
     public function __construct( Request $request, Response $response )
     {
-        $this->request = $request;
+        $this->request  = $request;
         $this->response = $response;
     }
 

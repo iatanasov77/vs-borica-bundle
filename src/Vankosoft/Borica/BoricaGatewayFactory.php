@@ -1,5 +1,8 @@
 <?php namespace Vankosoft\Borica;
 
+use Payum\Core\Bridge\Spl\ArrayObject;
+use Payum\Core\GatewayFactory;
+
 use Vankosoft\Borica\Action\AuthorizeAction;
 use Vankosoft\Borica\Action\CancelAction;
 use Vankosoft\Borica\Action\ConvertPaymentAction;
@@ -7,8 +10,6 @@ use Vankosoft\Borica\Action\CaptureAction;
 use Vankosoft\Borica\Action\NotifyAction;
 use Vankosoft\Borica\Action\RefundAction;
 use Vankosoft\Borica\Action\StatusAction;
-use Payum\Core\Bridge\Spl\ArrayObject;
-use Payum\Core\GatewayFactory;
 
 class BoricaGatewayFactory extends GatewayFactory
 {
@@ -17,6 +18,9 @@ class BoricaGatewayFactory extends GatewayFactory
      */
     protected function populateConfig( ArrayObject $config )
     {
+        /*
+         * I dont know which actions are needed for now
+         */
         $config->defaults([
             'payum.factory_name'            => 'borica',
             'payum.factory_title'           => 'Borica',
@@ -37,12 +41,12 @@ class BoricaGatewayFactory extends GatewayFactory
                 'public_cert'   => 'path/to/public.cer'
             ];
             $config->defaults( $config['payum.default_options'] );
-            $config['payum.required_options'] = [];
+            $config['payum.required_options'] = ['terminal_id', 'private_key', 'public_cert'];
 
             $config['payum.api'] = function ( ArrayObject $config ) {
                 $config->validateNotEmpty( $config['payum.required_options'] );
 
-                return new Api( (array) $config, $config['payum.http_client'], $config['httplug.message_factory'] );
+                return new Keys( $config['terminal_id'], $config['private_key'], $config['public_cert'] );
             };
         }
     }
