@@ -10,7 +10,8 @@ use Vankosoft\BoricaApi\Factory;
 use Vankosoft\BoricaApi\Request;
 use Vankosoft\BoricaApi\Response;
 
-class AbstractApiAction implements ActionInterface, ApiAwareInterface
+
+abstract class AbstractApiAction implements ActionInterface, ApiAwareInterface
 {
     use ApiAwareTrait {
         setApi as _setApi;
