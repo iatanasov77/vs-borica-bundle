@@ -7,14 +7,14 @@ use Payum\Core\Exception\RequestNotSupportedException;
 use Vankosoft\Borica\Request\Api\CreateTransaction;
 use Vankosoft\BoricaApi\Exceptions;
 
-class CreateChargeAction extends AbstractApiAction
+class CreateTransactionAction extends AbstractApiAction
 {
     /**
      * {@inheritDoc}
      */
     public function execute( $request )
     {
-        /** @var $request CreateCharge */
+        /** @var $request CreateTransaction */
         RequestNotSupportedException::assertSupports( $this, $request );
 
         $model = ArrayObject::ensureArrayObject( $request->getModel() );
