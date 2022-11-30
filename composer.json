@@ -1,0 +1,37 @@
+{
+    "name": "vankosoft/borica-bundle",
+    "type": "library",
+    "description": "The Payum extension. Rapid extensino development",
+    "keywords": [
+        "symfony",
+        "sylius",
+        "vankosoft",
+        "payum",
+        "borica",
+        "payment"
+    ],
+    "homepage": "https://github.com/iatanasov77/vs-payum-borica-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ivan I. Atanasov",
+            "email": "i.atanasov77@gmail.com"
+        }
+    ],
+    "require": {
+        "payum/core": "^1.5"
+    },
+    "require-dev": {
+        "payum/core": "^1.5",
+        "php-http/guzzle6-adapter": "^1.0"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vankosoft\\Borica\\": "src/Vankosoft/Borica/",
+            "Vankosoft\\BoricaBundle\\": "src/Vankosoft/BoricaBundle/"
+        }
+    }
+}

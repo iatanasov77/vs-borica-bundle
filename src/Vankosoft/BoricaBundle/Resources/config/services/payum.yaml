@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+        
+    vankosoft.borica_gateway_factory:
+        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+        arguments: [Vankosoft\Borica\BoricaGatewayFactory]
+        tags:
+            - { name: payum.gateway_factory_builder, factory: borica }
+
+
