@@ -1,3 +1,16 @@
+0.2.0	|	Release date: **30.11.2022**
+============================================
+* Bug-Fixes and Improvements:
+  - Add Other Api Actions.
+  - Fix Class Names.
+  - Create Status Action.
+  - Create Convert Payment Action.
+  - Create Capture Action.
+  - Add Api Actions for Supported.
+  - Fix AbstractApiAction .
+  - Fix CreateTransactionAction .
+
+
 0.1.1	|	Release date: **30.11.2022**
 ============================================
 * Bug-Fixes:
