@@ -6,6 +6,9 @@ use Payum\Core\GatewayAwareTrait;
 use Payum\Core\Model\PaymentInterface;
 use Payum\Core\Request\Convert;
 
+use Payum\Core\Bridge\Spl\ArrayObject;
+use Payum\Core\Security\SensitiveValue;
+
 class ConvertPaymentAction implements ActionInterface
 {
     use GatewayAwareTrait;
@@ -20,9 +23,27 @@ class ConvertPaymentAction implements ActionInterface
         RequestNotSupportedException::assertSupports( $this, $request );
 
         /** @var PaymentInterface $payment */
-        $payment = $request->getSource();
+        $payment                = $request->getSource();
 
-        throw new \LogicException( 'Not implemented' );
+        $details                = ArrayObject::ensureArrayObject( $payment->getDetails() );
+        $details["amount"]      = $payment->getTotalAmount();
+        $details["currency"]    = $payment->getCurrencyCode();
+        $details["description"] = $payment->getDescription();
+        
+        if ( $card = $payment->getCreditCard() ) {
+            if ( $card->getToken() ) {
+                $details["customer"] = $card->getToken();
+            } else {
+                $details["card"] = SensitiveValue::ensureSensitive([
+                    'number'    => $card->getNumber(),
+                    'exp_month' => $card->getExpireAt()->format('m'),
+                    'exp_year'  => $card->getExpireAt()->format('Y'),
+                    'cvc'       => $card->getSecurityCode(),
+                ]);
+            }
+        }
+        
+        $request->setResult( (array) $details );
     }
 
     /**
