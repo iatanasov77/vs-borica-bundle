@@ -22,7 +22,7 @@
         "payum/core": "^1.5"
     },
     "require-dev": {
-        "payum/core": "^1.5",
+        "vankosoft/payment-bundle": "^4.4",
         "php-http/guzzle6-adapter": "^1.0"
     },
     "config": {
