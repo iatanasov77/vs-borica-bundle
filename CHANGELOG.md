@@ -1,3 +1,9 @@
+0.2.3	|	Release date: **27.07.2025**
+============================================
+* New Features:
+  - Create Borica Checkout Controller.
+
+
 0.2.2	|	Release date: **15.03.2025**
 ============================================
 * Bug-Fixes:
