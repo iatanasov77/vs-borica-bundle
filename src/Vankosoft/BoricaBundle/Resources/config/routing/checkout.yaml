@@ -1,0 +1,9 @@
+vs_borica_prepare:
+    path:     /borica/prepare
+    controller: Vankosoft\PaymentBundle\Controller\Checkout\BoricaController::prepareAction
+    options:
+        expose: true
+
+vs_borica_done:
+    path:     /borica/done
+    controller: Vankosoft\PaymentBundle\Controller\Checkout\BoricaController::doneAction
